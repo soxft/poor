@@ -21,14 +21,18 @@ echo json_encode($datax);
 $user = '扶贫';
 $price = $_SESSION['money'];
 $comment = $_SESSION['comment'];
+$uid = mysqli_fetch_assoc(mysqli_query($conn,'select uuid() AS uid'))['uid'];
+$_SESSION['uid'] = $uid;
+
+$data = $uid . ',' . $comment;
 
 $data = array(
     "id" => ID,//你的码支付ID
     "pay_id" => $user, //唯一标识 可以是用户ID,用户名,session_id(),订单ID,ip 付款后返回
     "type" => 1,//1支付宝支付 3微信支付 2QQ钱包
     "price" => $price,//金额100元
-    "param" => "",//自定义参数
-    "notify_url"=> URL . 'noticft.php',//通知地址
+    "param" => $data,//自定义参数
+    "notify_url"=> URL . 'noticfy.php',//通知地址
     "return_url"=> URL . 'return.php',//跳转地址
     'page' => '4',
 ); //构造需要传递的参数

@@ -1,8 +1,13 @@
 <?php
 require_once 'config.php';
+session_start();
 
-$data = file_get_contents('https://api.xiuxiu888.com/ispay?id='.ID.'&token=' .TOKEN .'&order_id='.$_GET['order_id']);
-
-$data = json_decode($data,true);
-
-echo $data['status'];
+$uid = $_SESSION['uid'];
+$sql = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM `order` WHERE uid='$uid'"));
+if(!empty($sql['time']))
+{
+    echo '1';
+    session_destroy();
+} else {
+    echo '0';
+}

@@ -2,8 +2,9 @@
     define('ID','你的码支付ID');
     define('KEY','你的码支付密钥');
     define('TOKEN','你的码支付token');
-    define('URL','https://pay.xsot.cn/');
-    $conn = mysqli_connect('localhost','pay','pay','pay');
+    define('URL','https://pay.xsot.cn/'); 
+    
+    $conn = mysqli_connect('localhost','数据库账户','数据库密码','数据库名称');
     
     if($HTTP_SERVER_VARS["HTTP_X_FORWARDED_FOR"]){
     $ip = $HTTP_SERVER_VARS["HTTP_X_FORWARDED_FOR"];
