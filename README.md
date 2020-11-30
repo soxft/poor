@@ -13,4 +13,4 @@
 
 ## 求投食
 
-https://pay.xsot.cn
+https://pinqiong.ltd
