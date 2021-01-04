@@ -12,14 +12,23 @@ CREATE TABLE `config` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `content`;
+CREATE TABLE `content` (
+  `outTradeNo` mediumtext NOT NULL,
+  `ispaid` mediumtext NOT NULL,
+  `money` mediumtext NOT NULL,
+  `comment` mediumtext NOT NULL,
+  `time` mediumtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
   `uid` mediumtext NOT NULL,
   `money` mediumtext NOT NULL,
   `comment` mediumtext NOT NULL,
-  `time` mediumtext NOT NULL,
-  `ip` mediumtext NOT NULL
+  `time` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- 2020-11-30 10:43:28
+-- 2021-01-04 09:08:10

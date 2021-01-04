@@ -1,11 +1,14 @@
 <?php
-    define('ID','你的码支付ID');
-    define('KEY','你的码支付密钥');
-    define('TOKEN','你的码支付token');
-    define('URL','https://pay.xsot.cn/'); 
-    
-    $conn = mysqli_connect('localhost','数据库账户','数据库密码','数据库名称');
-    
+$saPrivateKey=''; //应用私钥
+
+$alipayPublicKey='';//支付宝公钥
+
+$appid = ''; // APPID
+
+$notifyUrl = 'https://example.com/notify.php';     //异步回调地址
+
+$conn = mysqli_connect('localhost','pay2','pay2','pay2');
+
     if($HTTP_SERVER_VARS["HTTP_X_FORWARDED_FOR"]){
     $ip = $HTTP_SERVER_VARS["HTTP_X_FORWARDED_FOR"];
     }
@@ -27,4 +30,5 @@
     else{
     $ip = "Unknown";
     }
+
 ?>

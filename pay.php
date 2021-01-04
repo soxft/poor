@@ -2,21 +2,10 @@
 require_once 'config.php';
 session_start();
 
-$comment = $_SESSION['comment'];
 $qrcode = $_SESSION['qrcode'];
-$order_id = $_SESSION['order_id'];
 $money = $_SESSION['money'];
 $endTime = $_SESSION['endTime'];
-$qrcode = $_SESSION['qrcode'];
-
-if(file_exists(ID . '.png'))
-{
-    $qrcode = URL . ID . '.png';
-} else {
-    $content = file_get_contents($qrcode);
-    file_put_contents(ID.'.png',$content);
-}
-
+$outTradeNo = $_SESSION['outTradeNo'];
 
 if(empty($endTime)){
     header('Refresh:0;url=\'./index.php\'');
@@ -24,12 +13,13 @@ if(empty($endTime)){
 }
 if($endTime <= time())
 {
-    session_destroy();
     header('Refresh:0;url=\'./index.php\'');
     exit();
 }
+
 ?>
 <html>
+    
     <head>
         <title>使用支付宝支付</title>
         <meta charset="UTF-8">
@@ -38,30 +28,59 @@ if($endTime <= time())
         <meta name="description" content="贫穷网" />
         <meta name="keywords" content="soxft,没钱,贫穷,xcsot" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/css/mdui.min.css">
+        <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/js/mdui.min.js"></script>
+        <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//static.runoob.com/assets/qrcode/qrcode.min.js"></script>
     </head>
-    <body style='max-width:70%;transform:translate(21%,20px);background-color:#F5F5F5;'>
-            <div style='Height:5px'></div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                         <h3 class="panel-title">使用支付宝支付</h3>
-                    </div>
-                     <div style='Height:30px'></div>
-                    <div class="panel-body" id='contentx' style='max-width:90%;transform:translateX(5%);'>
-                        <center>
-                            <div id='notice' ></div>
-                            <h3>请使用支付宝支付<?php echo $money ?>元</h3>
-                            <div id='qr'><img src='<?php echo $qrcode ?>'></div> <?php //echo $qrcode ?><!--https://cdn.jsdelivr.net/gh/soxft/cdn@master/alipay-dmf.png-->
-                            <h4 id='timer'>请在null分null秒内支付</h4>
-                            <h4>支付完成后请耐心等待5秒</h4>
-                            <h5>订单号: <?php echo $order_id ?></h5>
-                        </center>
-                    </div>
-                     <div style='Height:30px'></div>
+    <body background="//static.llilii.cn/images/kagamine/32639516_p2.jpg">
+        <div style="Height:60px"></div>
+        <div class="mdui-container" style="max-width: 360px;">
+            <div class="mdui-card" style="border-radius: 16px;">
+                <div class="mdui-card-menu">
+                    <button onclick="window.location.href='/'" class="mdui-btn mdui-btn-icon mdui-text-color-grey"><i class="mdui-icon material-icons">home</i>
+                    </button>
                 </div>
+                <div class="mdui-card-primary">
+                    <div class="mdui-card-primary-title">支付宝扫码支付
+                        <?php echo $money ?>元</div>
+                    <div class="mdui-card-primary-subtitle">Use Alipay to pay
+                        <?php echo $money ?> CNY</div>
+                </div>
+                <div id='cont' class="mdui-card-content">
+                    <!-- 加载 -->
+                    <center>
+                        <div id='qr'>
+                            <a href='<?php echo $qrcode ?>'><div id="qrcode"></div></a>
+                        </div>
+                         <h4 id='timer'>请在null分null秒内支付</h4>
+                         <h4>支付完成后请耐心等待5秒</h4>
+                         <h5>订单号: <?php echo $outTradeNo ?></h5>
+                    </center>
+                </div>
+                <div style='Height:30px'></div>
+            </div>
+        </div>
+         <div style='Height:20px'></div>
+ <div class="mdui-container" style="max-width: 360px;">
+    <div class="mdui-card" style="border-radius: 16px;">
+        <div class="mdui-card-content">
+        <center>Copyright © 2020 - <?php echo date('Y') ?> <a style='color:black' href='//xsot.cn'>xcsoft</a> All Rights Reserved.</center>
+        </div>
+    </div>
+</div>
+ <div style='Height:20px'></div><div style='Height:30px'></div>
                 <script>
+                    new QRCode(document.getElementById("qrcode"), 
+                    {
+                        text: "<?php echo $qrcode ?>",
+                        width: 170,
+                        height: 170,
+                        colorDark : "#000000",
+                        colorLight : "#ffffff",
+                        correctLevel : QRCode.CorrectLevel.H
+                    });  // 设置要生成二维码的链接
+                var $ = mdui.JQ;
                 pass = false;
                   var maxtime = <?php echo $endTime - time()?>; // 
                   function CountDown() {
@@ -78,81 +97,28 @@ if($endTime <= time())
                   }
                   timer = setInterval("CountDown()", 1000); 
                   
-                  
                   function getStatus() {
                     $.ajax({
                         method: 'GET',
-                        url: './ispaid.php',
+                        url: './getPay.php',
                         timeout: 10000,
                         data: {
-                            'id': '<?php echo ID ?>',
-                            'order_id': '<?php echo $order_id ?>',
-                            'token': '<?php echo TOKEN ?>'
+                            'outTradeNo': '<?php echo $outTradeNo ?>',
                         },
                         success: function(data) {
-                            data = eval('(' + data + ')');
-                            if (data == '1') {
-                                clearInterval(check);
-                                clearInterval(check2);
-                                clearInterval(timer);
-                                //$('#notice').html('<div class="alert alert-success" role="alert">感谢您的投食,跳转中...</div>')
-                                $('#contentx').html('<center><h2>感谢您的扶贫</h2></center>')
-                                console.log('支付成功')
-                                
-                            } 
-                        },
-                        complete: function(xhr, status) {
-                            if(pass)
-                            {
-                                //如果超时,移除二维码
-                                $('#qr').html('<h3>二维码已过期</h3>')
-                                 clearInterval(check);
-                                 clearInterval(check2);
-                                 clearInterval(timer);
+                            if(data == 'true'&&!pass){
+                                pass = true;
+                                clearInterval(g) 
+                                $('#cont').html('<center><div style="font-weight:100;font-size:30px">感谢您的扶贫</div></center>')
+                                setTimeout('window.location.href=\'index.php\'',3000)
+                            }else{
+                                console.log(data);
                             }
                         }
                     });
                 }
-                check = setInterval("getStatus()", 2000); 
+                var g = setInterval("getStatus()", 3000); 
+    </script>
                 
-                function getStatus2() {
-                    $.ajax({
-                        method: 'GET',
-                        url: './ispaid2.php',
-                        timeout: 10000,
-                        data: {
-                            'id': '<?php echo ID ?>',
-                            'order_id': '<?php echo $order_id ?>',
-                            'token': '<?php echo TOKEN ?>'
-                        },
-                        success: function(data) {
-                            //console.log(data);
-                            datax = Number(data); 
-                            if (datax >= 1) {
-                                clearInterval(check);
-                                clearInterval(check2);
-                                clearInterval(timer);
-                                //$('#notice').html('<div class="alert alert-success" role="alert">感谢您的投食,跳转中...</div>')
-                                 $('#contentx').html('<center><h2>感谢您的扶贫</h2></center>')
-                                 console.log('支付成功')
-                            } 
-                        },
-                        complete: function(xhr, status) {
-                            if(pass)
-                            {
-                                //如果超时,移除二维码
-                                $('#qr').html('<h3>二维码已过期</h3>')
-                                 clearInterval(check);
-                                 clearInterval(check2);
-                                 clearInterval(timer);
-                            }
-                        }
-                    });
-                }
-                check2 = setInterval("getStatus2()", 4000); 
                  </script>
     </body>
-    <footer>
-        <div style='Height:5px'></div>
-        <center><div class="well well-sm">Copyright © 2020 - <?php echo date('Y') ?> XCSOFT All Rights Reserved.</div></center>
-    </footer>
