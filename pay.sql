@@ -11,6 +11,9 @@ CREATE TABLE `config` (
   `content` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `config` (`type`, `content`) VALUES
+('money',	'0'),
+('num',	'0');
 
 DROP TABLE IF EXISTS `content`;
 CREATE TABLE `content` (
@@ -31,4 +34,4 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- 2021-01-04 09:08:10
+-- 2021-01-11 09:16:14
