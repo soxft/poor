@@ -14,4 +14,7 @@
 
 ## 求投食
 
-https://pinqiong.ltd
+https://pay.xsot.cn
+
+## TIPS
+源码仅供参考,请勿用于任何非法行为
