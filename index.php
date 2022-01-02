@@ -8,8 +8,8 @@
     <meta name="keywords" content="soxft,没钱,贫穷,xcsot" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/css/mdui.min.css">
-    <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/js/mdui.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/soxft/cdn@1.0.0/mdui/css/mdui.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@1.0.0/mdui/js/mdui.min.js"></script>
     <style>
         /* customizable snowflake styling */
         .snowflake {
