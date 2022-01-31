@@ -20,4 +20,4 @@
 
 ## DEMO
 
-~~https://pay.xsot.cn~~ ~~ALREADY POOR TO DEATH~~
+~~`https://pay.xsot.cn`~~ ~~ALREADY POOR TO DEATH~~
