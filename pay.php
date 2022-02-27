@@ -28,8 +28,8 @@ if($endTime <= time())
         <meta name="description" content="贫穷网" />
         <meta name="keywords" content="soxft,没钱,贫穷,xcsot" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/css/mdui.min.css">
-        <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/js/mdui.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/soxft/cdn@1.0.1/mdui/css/mdui.min.css">
+        <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@1.0.1/mdui/js/mdui.min.js"></script>
         <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="//static.runoob.com/assets/qrcode/qrcode.min.js"></script>
     </head>
