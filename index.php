@@ -8,8 +8,8 @@
     <meta name="keywords" content="soxft,没钱,贫穷,xcsot" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/soxft/cdn@1.0.0/mdui/css/mdui.min.css">
-    <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@1.0.0/mdui/js/mdui.min.js"></script>
+    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-y/mdui/0.4.2/js/mdui.min.js" type="application/javascript"></script>
+    <link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-y/mdui/0.4.2/css/mdui.min.css" type="text/css" rel="stylesheet" />
     <style>
         /* customizable snowflake styling */
         .snowflake {
@@ -242,7 +242,7 @@
         </div>
     </div>
     <div style='Height:20px'></div>
-    <body class="mdui-theme-primary-blue mdui-theme-accent-blue" background="https://cdn.jsdelivr.net/gh/soxft/cdn@1.9/urlshorting/background.png">
+    <body class="mdui-theme-primary-blue mdui-theme-accent-blue">
         <div class="mdui-container" style="max-width: 500px;">
             <div class="mdui-card" style="border-radius: 16px;">
                 <div class="mdui-card-menu">
