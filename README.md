@@ -17,7 +17,3 @@
 ## TIPS
 
 源码仅供参考,请勿用于任何非法行为
-
-## DEMO
-
-~~`https://pay.xsot.cn`~~ ~~ALREADY POOR TO DEATH~~
